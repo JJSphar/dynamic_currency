@@ -1,16 +1,18 @@
 public class Currency {
-    public static void main(String[] args) {
-        
-        DenomSet american = new DenomSet("Quarter,4,Dime,10,Nickel,20,Penny,100");
-        DenomSet anarchy = new DenomSet("Coin,1.5,Arrowhead,3,Button,150");
+	public static void main(String[] args) {
+		
+		DenomSet american = new DenomSet("Quarter,4,Dime,10,Nickel,20,Penny,100");
+		DenomSet anarchy = new DenomSet("Coin,1.5,Arrowhead,3,Button,150");
+		DenomSet mine = new DenomSet("A,2,B,5,C,10");
 
-        Combinator combinator = new Combinator(american);
-        
-        System.out.println(american.toString());
-        System.out.println(anarchy.toString());
-        System.out.println(anarchy.getNumCoins());
-        System.out.println(anarchy.getNumSmallest());
-        System.out.println(anarchy.values);
+		Combinator combinator = new Combinator(mine);
+		
+		System.out.println(mine.toString());
+		System.out.println(mine.getNumCoins());
+		System.out.println(mine.getTarget());
+		System.out.println(mine.values);
 
-    }
+		combinator.findSums();
+
+	}
 }

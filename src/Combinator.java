@@ -1,24 +1,30 @@
-
+import java.util.Arrays;
 
 class Combinator {
-    // Set of coins to work with
-    DenomSet coins;
+	// Set of denominations (coins)
+	DenomSet coins;
 
-    //2D Array where [i,n]=number of the ith coin needed to equal n 
-    int[][] combinations;
+	//Memoization array where [n,m]=# of nth coins to sum to m 
+	int[][] sums;
 
-    Combinator(DenomSet coins){
-        this.coins = coins;
-        combinations = new int[coins.getNumCoins()][coins.getNumSmallest()];
-    }
+	Combinator(DenomSet coins){
+		this.coins = coins;
+		sums = new int[coins.getNumCoins()][coins.getTarget()+1];
+	}
 
-    public void findCombinations(){
-        // Loop through every coin
-        for (int i = 0; i < combinations.length; i++) {
-            //Start at the max value
-            for(int n=combinations[i].length-1 ; n >= 0; n--){
-                // TODO
-            }
-        }
-    }
+	public void findSums(){
+		// Loop through every coin
+		for (int i = 0; i < coins.getNumCoins(); i++) {
+			int value = coins.values.get(i);
+			//Start filling in values
+			for(int j=0; j <= (coins.getTarget()/value); j++){
+				sums[i][j*value] = j;
+			}
+		}
+	}
+
+	// Traverses the DP array to print out combinations
+	public void findCombos(){
+
+	}
 }
