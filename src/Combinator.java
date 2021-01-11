@@ -4,7 +4,7 @@ class Combinator {
 	// Set of denominations (coins)
 	private DenomSet coins;
 
-	//Memoization array where [n,m]=# of ways to create m from the (0...n)th coins 
+	// Memoization array where [n,m]=# of ways to create m from the (0...n)th coins
 	private int[][] combos;
 
 	Combinator(DenomSet coins){
@@ -40,11 +40,36 @@ class Combinator {
 	public void printCombos(){
 		findCombos();
 		printHeader();
-		printCombosHelper(coins.getTarget(), coins.getNumCoins());
+		printCombosHelper(coins.getNumCoins(), coins.getTarget(), new int[coins.getNumCoins()]);
 	}
 	
-	private void printCombosHelper(int target, int coinInd){
+	private void printCombosHelper(int coinInd, int target, int[] coinsUsed){
+		// No coins left to try - exit 
+		if(coinInd == 0){
+			return;
+		}
 		
+		// Found a combo that sums up to target
+		if(target == 0){
+			printOneCombo(coinsUsed);
+		}
+
+		int combosWithCoin = combos[coinInd][target];
+		int combosWithoutCoin = combos[coinInd-1][target];
+
+		// Can this value be made using this coin?		
+		if(combosWithCoin != combosWithoutCoin){
+			// Don't use this coin - try smaller denoms
+			printCombosHelper(coinInd-1, target, coinsUsed.clone());
+
+			// Use this coin in combos
+			coinsUsed[coinInd-1] += 1;
+			printCombosHelper(coinInd, target-coins.values.get(coinInd-1), coinsUsed.clone());
+
+		}else{
+			// This coin cannot be used to make this value - traverse combos not including this coin
+			printCombosHelper(coinInd-1, target, coinsUsed.clone()); 
+		}	
 	}
 
 	private void printHeader(){
