@@ -34,13 +34,13 @@ class Combinator {
 				}
 			}
 		}
-		System.out.println(Arrays.deepToString(combos));
 	}
 
 	public void printCombos(){
 		findCombos();
 		printHeader();
 		printCombosHelper(coins.getNumCoins(), coins.getTarget(), new int[coins.getNumCoins()]);
+		System.out.println("Count: " + combos[coins.getNumCoins()][coins.getTarget()]);
 	}
 	
 	private void printCombosHelper(int coinInd, int target, int[] coinsUsed){
@@ -52,6 +52,7 @@ class Combinator {
 		// Found a combo that sums up to target
 		if(target == 0){
 			printOneCombo(coinsUsed);
+			return;
 		}
 
 		int combosWithCoin = combos[coinInd][target];
@@ -74,14 +75,14 @@ class Combinator {
 
 	private void printHeader(){
 		for (String name : coins.names) {
-			System.out.printf("%5s",name);
+			System.out.printf("%-10s",name);
 		}
 		System.out.println();
 	}
 
 	private void printOneCombo(int[] coinsUsed){
 		for (int numCoin : coinsUsed) {
-			System.out.printf("%5d",numCoin);
+			System.out.printf("%-10d",numCoin);
 		}
 		System.out.println();
 	}
