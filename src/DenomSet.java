@@ -1,7 +1,12 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 // Represents a set of named denominations and their relative values
 class DenomSet{
+	// Number of distinct denominations
+	public int numDenoms;
+
 	// Names of the denominations 
 	public ArrayList<String> names = new ArrayList<>();
 	
@@ -13,10 +18,10 @@ class DenomSet{
 
 	// Target value (this is equal to the required # of the smallest-denomination element)
 	private int target;
+	private int lcm;
 
 	DenomSet(String input){
 		parseInput(input);
-		findTarget();
 		setDenomValues();
 	}
 
@@ -36,20 +41,26 @@ class DenomSet{
 	}
 
 	// Finds the required number of the lowest-value denomination    
-	private void findTarget(){
+	private double findMaxCoins(){
 		double max = 0;
 		for (double numCoins : numCoins) {
 			if (numCoins > max){
 				max = numCoins;
 			}
 		}
-		target = (int)max;
+		return max;
 	}
 
+	// Calculates the relative value of each denomination
+	// Normalizes using the LCM to make sure the values are all integers
 	private void setDenomValues(){
+		int lcm = Utils.lcm(numCoins);
+		double max = findMaxCoins();
 		for (int i = 0; i < numCoins.size(); i++) {
-			values.add((int)(target / numCoins.get(i)));
+			values.add((int)((max / numCoins.get(i))*lcm));
 		}
+
+		target=(int)(max*lcm);
 	}
 
 	public int getTarget(){

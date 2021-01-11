@@ -1,3 +1,8 @@
+import java.util.ArrayList;
+import java.util.List;
+
+import jdk.jshell.execution.Util;
+
 public class Currency {
 	public static void main(String[] args) {
 		
@@ -16,6 +21,8 @@ public class Currency {
 		System.out.println(mine.values);
 
 		combinator.printCombos();
-
+		System.out.println(Utils.lcm(2, 5));
+		System.out.println(Utils.lcm(new ArrayList<Double>(List.of(2.0,5.0))));
+		System.out.println(Utils.lcm(new ArrayList<Double>(List.of(2.0,5.0,4.0,1.5))));
 	}
 }
