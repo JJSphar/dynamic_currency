@@ -1,0 +1,55 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Launch random Currency",
+            "request": "launch",
+            "mainClass": "currency.Currency",
+            "projectName": "currency_f7bc86f",
+            "args": "\"asd,1.5,baafff,10,b0,175\""
+        },
+        {
+            "type": "java",
+            "name": "Launch american Currency",
+            "request": "launch",
+            "mainClass": "currency.Currency",
+            "projectName": "currency_f7bc86f",
+            "args": "--american"
+        },
+        {
+            "type": "java",
+            "name": "Launch anarchy Currency",
+            "request": "launch",
+            "mainClass": "currency.Currency",
+            "projectName": "currency_f7bc86f",
+            "args": "Coin,1.5,Arrowhead,3,Button,150"
+        },
+        {
+            "type": "java",
+            "name": "Launch no args",
+            "request": "launch",
+            "mainClass": "currency.Currency",
+            "projectName": "currency_f7bc86f",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "Launch LCM 60",
+            "request": "launch",
+            "mainClass": "currency.Currency",
+            "projectName": "currency_f7bc86f",
+            "args": "A,2,B,5,C,4,D,1.5"
+        },
+        
+    ]
+}
